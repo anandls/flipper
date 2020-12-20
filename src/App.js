@@ -1,31 +1,34 @@
 import React from 'react';
 import './App.css';
 
-const Button = (props) => {
-  const [color, setColor] = React.useState(0);
-
-  const handleAssignColorClick = () => {
-    color === props.colors.length - 1
-      ? setColor(0)
-      : setColor((prev) => prev + 1);
-  };
-
-  return (
+const Button = ({ handleChange, ...props }) => {
+  return(
     <button
-      onClick={handleAssignColorClick}
-      style={{ backgroundColor: props.colors[color] }}
+      onClick={handleChange}
+      style={{ backgroundColor:  props.color}}
     >
-      {props.colors[color]}
+    {props.color}
     </button>
   );
 };
 
 const App = () => {
+
+  const [color, setColor] = React.useState(0);
   const colors = ['#FFC000', '#3386FF', '#247BA0', '#FF0000'];
+
+ const handleChange = () => {
+    color === colors.length - 1
+      ? setColor(0)
+      : setColor((prev) => prev + 1);
+  };
 
   return (
     <section>
-      <Button colors={colors} />
+       <Button
+          handleChange={handleChange}
+          color={colors[color]}
+        />
     </section>
   );
 };

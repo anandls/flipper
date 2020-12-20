@@ -1,5 +1,3 @@
-# Getting Started with Create React App
-
 ### Instructions
 
 This project is bootstrapped with Create React App
